@@ -1,10 +1,10 @@
-import app from './app'; // Import the app from app.ts
+import app from './app'; 
 import dotenv from 'dotenv';
-import { Logger } from 'tslog'; // Import a logging library
+import { Logger } from 'tslog'; 
 
 dotenv.config();
 
-// Create a logger instance
+
 const logger = new Logger();
 const PORT = process.env.PORT || 3000;
 
@@ -17,7 +17,7 @@ const server = app.listen(PORT, () => {
 process.on('unhandledRejection', (error) => {
   logger.error('Unhandled promise rejection:', error);
   server.close(() => {
-    process.exit(1); // Exit the process with failure
+    process.exit(1); 
   });
 });
 
@@ -25,6 +25,6 @@ process.on('unhandledRejection', (error) => {
 process.on('uncaughtException', (error) => {
   logger.error('Uncaught exception:', error);
   server.close(() => {
-    process.exit(1); // Exit the process with failure
+    process.exit(1);
   });
 });

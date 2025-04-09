@@ -8,7 +8,7 @@ dotenv.config();
 const logger = new Logger();
 
 const pool = new Pool({
-  connectionString: process.env.DATABASE_URL, 
+  connectionString: process.env.DATABASE_URL, // db connection using connection string
 });
 
 

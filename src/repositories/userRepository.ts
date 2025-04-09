@@ -3,7 +3,9 @@ import { User } from '../types';
 import bcrypt from 'bcryptjs'
 
 export class UserRepository {
+
   async createUser (username: string, password: string): Promise<User> {
+    // hash the password of the user with bcrypt ans the salt of 10
     const hashedPassword = await bcrypt.hash(password, 10);
     const result = await pool.query('INSERT INTO users (username, password) VALUES ($1, $2) RETURNING *', [username, hashedPassword]);
     return result.rows[0];

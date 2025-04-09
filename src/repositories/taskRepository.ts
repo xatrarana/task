@@ -2,11 +2,13 @@ import pool from '../config/db';
 import { Task } from '../types';
 
 export class TaskRepository {
+  // Creates a new task for a user 
   async createTask(userId: number, title: string): Promise<Task> {
     const result = await pool.query('INSERT INTO tasks (user_id, title) VALUES ($1, $2) RETURNING *', [userId, title]);
     return result.rows[0];
   }
 
+  // Get all the tasks for user by their user id
   async getTasksByUserId(userId: number): Promise<Task[]> {
     const result = await pool.query('SELECT * FROM tasks WHERE user_id = $1', [userId]);
     return result.rows;
@@ -20,6 +22,7 @@ export class TaskRepository {
   async deleteTask(taskId: number): Promise<void> {
     await pool.query('DELETE FROM tasks WHERE id = $1', [taskId]);
   }
+  // Toggles the completion status of a task between 'completed' and 'pending'
   async toggleTaskCompletion(taskId: number): Promise<Task> {
     const currentTaskResult = await pool.query('SELECT status FROM tasks WHERE id = $1', [taskId]);
     
