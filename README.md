@@ -63,17 +63,13 @@ Follow the steps below to set up the project on your local machine.
     Create a `.env` file in the root of the project directory and configure the following environment variables according to your PostgreSQL setup and desired application settings:
 
     ```env
-  DATABASE_URL=""
-JWT_SECRET=your_jwt_secret
-PORT=3000
+    DATABASE_URL=""
+    JWT_SECRET=your_jwt_secret
+    PORT=3000
     ```
 
     * `PORT`: The port on which the application will run (default is 3000).
-    * `DB_HOST`: The hostname or IP address of your PostgreSQL server (default is localhost).
-    * `DB_PORT`: The port number of your PostgreSQL server (default is 5432).
-    * `DB_USER`: Your PostgreSQL username.
-    * `DB_PASSWORD`: Your PostgreSQL password.
-    * `DB_NAME`: The name of the PostgreSQL database to be used by the application.
+    * `DATABASE_URL`: connection string of the neon postgres database in my case./
     * `JWT_SECRET`: A secret key used for signing JSON Web Tokens for authentication. **Ensure this is a strong and unique value.**
 
 5.  **Database Setup:**
